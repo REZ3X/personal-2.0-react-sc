@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #212121;
+  display: flex;
+  justify-content: center;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for WebKit browsers */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.pulse {
+  height: 100px;
+  width: 100%; /* Ensure it covers the entire width */
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.pulse::after {
+  content: "";
+  display: block;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><polyline fill="none" stroke-width="3" stroke="%23980504" points="2.4,90 70.8,90 76.1,85 81.1,90 89.9,90 93.8,92 102.8,75 110.6,100 115.3,90 126.4,90 134.4,88 142.4,90 197.8,90 "/></svg>')
+    repeat-x; /* Repeat horizontally */
+  width: 200%; /* Ensure it covers the entire width */
+  height: 100%;
+  position: absolute;
+  animation: 8s pulse infinite linear; /* Changed duration to 8s */
+}
+
+@media screen and (max-width: 376px) {
+  .pulse::after {
+    width: 120%;
+  }
+}
+
+.pulse::before {
+  content: "";
+  background: #444;
+  position: absolute;
+  z-index: -1;
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  top: 16px; /* the SVG isn't exactly centered.. */
+  margin: auto;
+  height: 3px;
+}
+
+@keyframes pulse {
+  0% {
+    clip: rect(0, 0, 100px, 0);
+  }
+  10% {
+    clip: rect(0, 66.67px, 100px, 0);
+  }
+  38% {
+    clip: rect(0, 133.33px, 100px, 0);
+  }
+  48% {
+    clip: rect(0, 200px, 100px, 0);
+  }
+  52% {
+    clip: rect(0, 200px, 100px, 0);
+  }
+  62% {
+    clip: rect(0, 200px, 100px, 66.67px);
+  }
+  90% {
+    clip: rect(0, 200px, 100px, 133.33px);
+  }
+  100% {
+    clip: rect(0, 200px, 100px, 200px);
+  }
+}
+
+/* styles.css */
+/* styles.css */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.loader-bar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #595f5b, #c6e3ff);
+  animation: load 2s infinite;
+}
+
+@keyframes load {
+  0% {
+      width: 0;
+  }
+  50% {
+      width: 100%;
+  }
+  100% {
+      width: 0;
+  }
+}
+
+/* Hide loader on screens smaller than 768px */
+@media (max-width: 768px) {
+  .loader-container {
+      display: none;
+  }
+}
+
+.borderx {
+  border: solid #6D6D6D;
+}
